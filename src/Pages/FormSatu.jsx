@@ -314,6 +314,7 @@ export default function FormSatu() {
                         rounded-md
                         text-white
                         "
+                        type='reset'
                     >
                       Reset
                     </button>
