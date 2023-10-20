@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-export default function FormSatu() {
+
+export default function FormDua() {
   const [nama, setNama] = useState('');
-  const [namaError, setNamaError] = useState(false);
-  const [noHp, setNoHp] = useState(null);
-  const [noPekerja, setNoPekerja] = useState('');
-  const [noRumah, setNoRumah] = useState('');
-  const [noKantor, setNoKantor] = useState('');
-  const [unit, setUnit] = useState('');
+  const [noHp, setNoHp] = useState('');
+  const [npm, setNpm] = useState('');
+  const [tingkat, setTingkat] = useState('');
+  const [semester, setSemester] = useState('');
+  const [email, setEmail] = useState('');
   const [departemen, setDepartemen] = useState('');
   const [tempat, setTempat] = useState('');
   const [tanggalLahir, setTanggalLahir] = useState('');
@@ -26,31 +26,32 @@ export default function FormSatu() {
   });
   const onSumbit = (e) => {
     e.preventDefault();
-    if (!noHp && !noRumah && !noKantor) return alert('Salah satu nomor wajib di isi');
+    if (!pasPhoto)
+      return Swal.fire({
+        icon: 'error',
+        title: 'Berkas Wajib Diupload!',
+      });
     Swal.fire({
       icon: 'success',
       title: 'Berhasil Dibuat!',
       html:
         `
-                <p>Nama : ${nama}</p>` +
-        `<p>No Pekerja : ${noPekerja}</p>` +
-        `<p>No HP : ${noHp ?? 'Nomor Hp tidak ada'} </p>` +
-        (!noRumah == false ? `<p>No Rumah : ${noRumah} </p>` : '') +
-        (!noKantor == false ? `<p>No HP : ${noKantor} </p>` : '') +
-        `<p>Unit : ${unit} </p>` +
-        `<p>Departemen : ${departemen} </p>` +
-        `<p>Tempat, Tanggal Lahir : ${tempat + ', ' + tanggalLahir}</p>` +
-        `<p>Alamat : ${alamat}</p>`,
+        <p>Nama : ${nama}</p>` +
+        `<p>Email : ${email}</p>` +
+        `<p>No HP : ${noHp} </p>` +
+        `<p>NPM : ${npm} </p>` +
+        `<p>Tempat/Tanggal Lahir : ${tempat + '/' + tanggalLahir}</p>` +
+        `<p>Alamat : ${alamat}</p>` +
+        `<p>Tingkat/Semester : ${tingkat}/${semester}</p>`,
       imageUrl: URL.createObjectURL(pasPhoto),
       imageHeight: 300,
-
-      
+      imageWidth: 200,
     });
   };
 
   const onChangeFile = (e) => {
-    setPasPhoto(e.target.files[0] ?? null);
-    if (!e.target.value)
+    setPasPhoto(e.target.files[0]);
+    if (!e.target.files[0])
       return Toast.fire({
         icon: 'error',
         title: 'File not uploaded!',
@@ -69,18 +70,18 @@ export default function FormSatu() {
               <h1 className="font-poppins text-xl">Form Page</h1>
             </div>
             <form action="" onSubmit={onSumbit}>
-              <div className="grid grid-cols-2 ">
+              <div className="grid grid-cols-2 gap-3">
                 <div className="input">
                   <div className="flex flex-col">
-                    <label htmlFor="#no_pekerja " className="font-poppins">
-                      No Pekerja
+                    <label htmlFor="#nama " className="font-poppins">
+                      Email
                     </label>
                     <input
-                    required
+                      required
                       placeholder="Ketik disini..."
-                      id="no_pekerja"
-                      value={noPekerja}
-                      onChange={(e) => setNoPekerja(e.target.value)}
+                      id="Nama"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       type="text"
                       className="transition ease-in-out duration-300 
                     rounded outline outline-[1px] 
@@ -91,18 +92,16 @@ export default function FormSatu() {
                   </div>
                 </div>
 
-                <div className="input ml-5">
+                <div className="input">
                   <div className="flex flex-col">
                     <label htmlFor="#nama " className="font-poppins">
                       Nama
                     </label>
                     <input
-                    required
+                      required
                       id="nama"
                       value={nama}
-                      onChange={(e) => {
-                        setNama(e.target.value);
-                      }}
+                      onChange={(e) => setNama(e.target.value)}
                       placeholder="Ketik disini..."
                       type="text"
                       className="transition ease-in-out duration-300 
@@ -111,73 +110,39 @@ export default function FormSatu() {
                     focus:drop-shadow-lg
                     p-1"
                     />
-                    {!namaError ? null : (
-                      <label htmlFor="" className="text-red-600">
-                        Warning
-                      </label>
-                    )}
                   </div>
                 </div>
-                <h3 className="font-poppins text-lg mt-5 col-span-2">No. Telepon</h3>
-                <div className="input">
+                <div className="input ">
                   <div className="flex flex-col">
+                    <label htmlFor="#alamat" className="font-poppins">
+                      NPM
+                    </label>
                     <input
+                      required
+                      placeholder="Ketik disini..."
+                      id="Nama"
+                      value={npm}
+                      onChange={(e) => setNpm(e.target.value)}
+                      type="text"
+                      className="transition ease-in-out duration-300 
+                    rounded outline outline-[1px] 
+                    outline-slate-300 focus:outline-sky-600 drop-shadow-md 
+                    focus:drop-shadow-lg
+                    p-1"
+                    />
+                  </div>
+                </div>
+                <div className="input ">
+                  <div className="flex flex-col">
+                    <label htmlFor="#no-hp" className="font-poppins">
+                      No. HP
+                    </label>
+                    <input
+                      required
+                      placeholder="Ketik disini..."
+                      id="Nama"
                       value={noHp}
                       onChange={(e) => setNoHp(e.target.value)}
-                      id="no_hp"
-                      placeholder="Hp."
-                      type="number"
-                      className="transition ease-in-out duration-300 
-                    rounded outline outline-[1px] 
-                    outline-slate-300 focus:outline-sky-600 drop-shadow-md 
-                    focus:drop-shadow-lg
-                    p-1"
-                    />
-                  </div>
-                </div>
-                <div className="input ml-5">
-                  <div className="flex flex-col">
-                    <input
-                      id="no_rumah"
-                      value={noRumah}
-                      onChange={(e) => setNoRumah(e.target.value)}
-                      placeholder="Rumah"
-                      type="number"
-                      className="transition ease-in-out duration-300 
-                    rounded outline outline-[1px] 
-                    outline-slate-300 focus:outline-sky-600 drop-shadow-md 
-                    focus:drop-shadow-lg
-                    p-1"
-                    />
-                  </div>
-                </div>
-                <div className="input mt-5 col-span-2">
-                  <div className="flex flex-col">
-                    <input
-                      id="kantor"
-                      value={noKantor}
-                      onChange={(e) => setNoKantor(e.target.value)}
-                      placeholder="Kantor"
-                      type="number"
-                      className="transition ease-in-out duration-300 
-                    rounded outline outline-[1px] 
-                    outline-slate-300 focus:outline-sky-600 drop-shadow-md 
-                    focus:drop-shadow-lg
-                    p-1"
-                    />
-                  </div>
-                </div>
-                <div className="input mt-5">
-                  <div className="flex flex-col">
-                    <label htmlFor="#unit " className="font-poppins">
-                      Unit
-                    </label>
-                    <input
-                    required
-                      id="unit"
-                      value={unit}
-                      onChange={(e) => setUnit(e.target.value)}
-                      placeholder="Ketik disini..."
                       type="text"
                       className="transition ease-in-out duration-300 
                     rounded outline outline-[1px] 
@@ -187,64 +152,62 @@ export default function FormSatu() {
                     />
                   </div>
                 </div>
-                <div className="input ml-5 mt-5">
-                  <div className="flex flex-col">
-                    <label htmlFor="#departemen " className="font-poppins">
-                      Departemen
-                    </label>
-                    <input
-                    required
-                      id="departemen"
-                      value={departemen}
-                      onChange={(e) => setDepartemen(e.target.value)}
-                      placeholder="Ketik disini..."
-                      type="text"
-                      className="transition ease-in-out duration-300 
-                    rounded outline outline-[1px] 
-                    outline-slate-300 focus:outline-sky-600 drop-shadow-md 
-                    focus:drop-shadow-lg
-                    p-1"
-                    />
-                  </div>
+                <div className="col-span-2 w-full">
+                  <h3 className="font-poppins">Tempat/Tanggal Lahir</h3>
                 </div>
-                <div className="col-span-2 mt-5 ">
-                  <h3 className="font-poppins">Tempat, Tanggal Lahir</h3>
-                </div>
-                <div className="input">
-                  <div className="flex flex-col">
+
+                <div className="col-span-2">
+                  <div className="flex">
                     <input
-                    required
+                      required
                       id="Tempat"
                       value={tempat}
                       onChange={(e) => setTempat(e.target.value)}
                       type="text"
                       placeholder="Tempat"
                       className="transition ease-in-out duration-300 
-                    rounded outline outline-[1px] 
+                      w-full
+                    rounded-l-md outline outline-[1px] 
                     outline-slate-300 focus:outline-sky-600 drop-shadow-md 
                     focus:drop-shadow-lg
-                    p-1"
+                    p-[5px]"
                     />
-                  </div>
-                </div>
-                <div className="input ml-5">
-                  <div className="flex flex-col">
                     <input
-                    required
+                      required
                       id="tanggal-lahir"
                       value={tanggalLahir}
                       onChange={(e) => setTanggalLahir(e.target.value)}
                       type="date"
                       placeholder="Tempat"
                       className="transition ease-in-out duration-300 
-                    rounded outline outline-[1px] 
+                      p-1
+                    rounded-r-md outline outline-[1px] 
                     outline-slate-300 focus:outline-sky-600 drop-shadow-md 
                     focus:drop-shadow-lg
-                    p-1"
+                    w-full
+                    "
                     />
                   </div>
                 </div>
-                <div className="input mt-5 col-span-2">
+
+                {/* <input
+                    type="text"
+                    className="transition ease-in-out duration-300 
+                    rounded-l-md outline outline-[1px] 
+                    outline-slate-300 focus:outline-sky-600 drop-shadow-md 
+                    focus:drop-shadow-lg
+                    p-1 "
+                  />
+                  <input
+                    type="text"
+                    className="transition ease-in-out duration-300 
+                    rounded-r-md outline outline-[1px] 
+                    outline-slate-300 focus:outline-sky-600 drop-shadow-md 
+                    focus:drop-shadow-lg
+                    p-1"
+                  /> */}
+
+                <div className="input col-span-2">
                   <div className="flex flex-col">
                     <label htmlFor="#alamat" className="font-poppins">
                       Alamat
@@ -263,14 +226,52 @@ export default function FormSatu() {
                     />
                   </div>
                 </div>
-                <div className="input mt-5 col-span-2">
+
+                <div className="col-span-2 mt-5 ">
+                  <h3 className="font-poppins">Tingkat/Semester</h3>
+                </div>
+
+                <div className="col-span-2">
+                  <div className="flex">
+                    <input
+                      required
+                      id="tingkat"
+                      value={tingkat}
+                      onChange={(e) => setTingkat(e.target.value)}
+                      type="text"
+                      placeholder="Tingkat"
+                      className="transition ease-in-out duration-300 
+                      w-full
+                    rounded-l-md outline outline-[1px] 
+                    outline-slate-300 focus:outline-sky-600 drop-shadow-md 
+                    focus:drop-shadow-lg
+                    p-[5px]"
+                    />
+                    <input
+                      required
+                      id="tanggal-lahir"
+                      value={semester}
+                      onChange={(e) => setSemester(e.target.value)}
+                      type="text"
+                      placeholder="Semester"
+                      className="transition ease-in-out duration-300 
+                      p-1
+                    rounded-r-md outline outline-[1px] 
+                    outline-slate-300 focus:outline-sky-600 drop-shadow-md 
+                    focus:drop-shadow-lg
+                    w-full
+                    "
+                    />
+                  </div>
+                </div>
+                <div className="input col-span-2">
                   <div className="flex flex-col">
                     <label htmlFor="pas-photo">Pas Foto</label>
                     <div className="flex justify-center">
                       <img src={pasPhoto ? URL.createObjectURL(pasPhoto) : null} className={(pasPhoto ? 'w-[200px] h-[200px] ' : '') + 'object-cover rounded-full'} alt="" />
                     </div>
                     <input
-                    required
+                      required
                       type="file"
                       onChange={onChangeFile}
                       accept="image/*"
@@ -278,7 +279,8 @@ export default function FormSatu() {
                       placeholder="Ketik disini..."
                       className="block font-poppins file:rounded-full
                       file:border-0
-                      file:p-1
+                      file:px-3
+                      file:py-1
                       file:bg-blue-100
                       file:text-blue-600
                       file:font-semibold
@@ -293,7 +295,6 @@ export default function FormSatu() {
                   <div className="flex justify-center">
                     <button
                       className="
-          
                         hover:bg-blue-500
                         bg-blue-700
                         py-1
@@ -301,6 +302,7 @@ export default function FormSatu() {
                         rounded-md
                         text-white
                         "
+                      type="submit"
                     >
                       Submit
                     </button>
@@ -314,6 +316,8 @@ export default function FormSatu() {
                         rounded-md
                         text-white
                         "
+                      type='reset'
+                      onClick={() => setPasPhoto(null)}
                     >
                       Reset
                     </button>
