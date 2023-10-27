@@ -4,6 +4,7 @@ const Login = lazy(() => import('./Pages/Login'))
 const Register = lazy(() => import('./Pages/Register'))
 const FormSatu = lazy(() => import('./Pages/FormSatu'))
 const FormDua = lazy(() => import('./Pages/FormDua'))
+const ToDo = lazy(() => import('./Pages/ToDo'))
 export default function App() {
 
   const router = createBrowserRouter([
@@ -22,6 +23,10 @@ export default function App() {
     {
       path: '/formdua',
       element: <FormDua />
+    },
+    {
+      path: '/todo',
+      element: <ToDo />
     }
   ])
 
