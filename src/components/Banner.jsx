@@ -28,7 +28,9 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <img src={fuxuan} className="rounded-full object-cover max-h-[400px]" height={400} width={400} alt="" />
+      <div>
+        <img src={fuxuan} className="rounded-full object-cover max-h-[400px]" height={400} width={400} alt="" />
+      </div>
     </div>
   );
 };
