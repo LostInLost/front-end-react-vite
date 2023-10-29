@@ -101,7 +101,7 @@ export default function Register() {
                 <div>
                   <p>
                     Already have account?{' '}
-                    <Link to={'/'} className="text-blue-500 hover:text-blue-400">
+                    <Link to={'/login'} className="text-blue-500 hover:text-blue-400">
                       <u>Login</u>
                     </Link>{' '}
                     Here

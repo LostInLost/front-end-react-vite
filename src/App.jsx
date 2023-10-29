@@ -7,6 +7,7 @@ const FormDua = lazy(() => import('./Pages/FormDua'))
 const ToDo = lazy(() => import('./Pages/ToDo'))
 const Navbar = lazy(() => import('./components/Nav'))
 const Banner = lazy(() => import('./components/Banner'))
+const Project = lazy(() => import('./components/Projects'))
 export default function App() {
 
   const router = createBrowserRouter([
@@ -17,27 +18,35 @@ export default function App() {
         {
           path: '/',
           index: true,
-          element: <Banner />
-        }
-      ]
+          element: <Banner />,
+        },
+        {
+          path: '/projects',
+          element: <Project />,
+        },
+      ],
+    },
+    {
+      path: '/login',
+      element: <Login />,
     },
     {
       path: '/register',
-      element: <Register />
+      element: <Register />,
     },
     {
       path: '/formsatu',
-      element: <FormSatu />
+      element: <FormSatu />,
     },
     {
       path: '/formdua',
-      element: <FormDua />
+      element: <FormDua />,
     },
     {
       path: '/todo',
-      element: <ToDo />
-    }
-  ])
+      element: <ToDo />,
+    },
+  ]);
 
   return (
     <>
