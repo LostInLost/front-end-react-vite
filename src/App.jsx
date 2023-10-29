@@ -5,12 +5,21 @@ const Register = lazy(() => import('./Pages/Register'))
 const FormSatu = lazy(() => import('./Pages/FormSatu'))
 const FormDua = lazy(() => import('./Pages/FormDua'))
 const ToDo = lazy(() => import('./Pages/ToDo'))
+const Navbar = lazy(() => import('./components/Nav'))
+const Banner = lazy(() => import('./components/Banner'))
 export default function App() {
 
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Login />
+      element: <Navbar />,
+      children: [
+        {
+          path: '/',
+          index: true,
+          element: <Banner />
+        }
+      ]
     },
     {
       path: '/register',
