@@ -4,7 +4,7 @@ import img from '../assets/profile.png';
 import fuxuan from '../assets/fuxuan.jpg';
 const Banner = () => {
   return (
-    <div className="lg:px-56 px-10 lg:py-0 py-20 text-center gap-5 lg-text-start flex lg:flex-row flex-col-reverse justify-between lg:gap-28 items-center h-screen">
+    <div className="lg:px-56 px-10 lg:py-0 py-[200px] text-center gap-5 lg-text-start flex lg:flex-row flex-col-reverse justify-between lg:gap-28 items-center h-screen w-screen">
       <div className="h-full lg:py-40 flex flex-col justify-center lg:items-start items-center text-white">
         <h1 className="text-[52px] font-semibold mb-8 leading-normal">
           {' '}
