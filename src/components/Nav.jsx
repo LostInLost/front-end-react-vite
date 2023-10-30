@@ -10,7 +10,7 @@ const Nav = () => {
   const HandleClick = () => setClick(!click);
   const content = (
     <>
-      <div className="lg:hidden block absolute top-16 w-full left-0 right-0 bg-slate-900 transition">
+      <div className="lg:hidden z-1 top-16 w-full left-0 right-0 bg-slate-900 transition">
         <ul className="text-center text-xl p-20 ">
           <Link to={'/'}>
             <li className={'my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded ' + (path.pathname == '/' ? 'bg-slate-800' : '')}>Home</li>
@@ -48,7 +48,7 @@ const Nav = () => {
           </button>
         </div>
       </nav>
-      <div className="bg-slate-900">
+      <div className="bg-slate-900 my-auto">
         <Outlet />
       </div>
     </>
