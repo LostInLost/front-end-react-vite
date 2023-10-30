@@ -24,7 +24,7 @@ const Nav = () => {
   );
   return (
     <>
-      <nav className="bg-slate-900">
+      <nav className="bg-slate-900 max-md:fixed max-md:w-screen">
         <div className="h-10vh flex justify-between z-50 text-white lg:py-5 px-20 py-4 flex-1">
           <div className="flex item-center flex-1">
             <span className="text-3xl font-bold">Lasinto.</span>
