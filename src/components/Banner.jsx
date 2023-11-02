@@ -1,7 +1,7 @@
 import { AiFillGithub } from 'react-icons/ai';
 import { FaInstagram, FaLinkedinIn, FaFacebook } from 'react-icons/fa';
 import img from '../assets/profile.png';
-import fuxuan from '../assets/fuxuan.jpg';
+import fuxuan from '../assets/Profile2.png';
 const Banner = () => {
   return (
     <div className="flex  h-screen flex-wrap max-sm:flex-col-reverse">
