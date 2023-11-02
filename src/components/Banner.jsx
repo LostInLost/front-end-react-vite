@@ -8,9 +8,9 @@ const Banner = () => {
       <div className="m-auto text-white max-sm:text-center">
         <h1 className="text-[52px] font-semibold mb-8 leading-normal">
           {' '}
-          Selamat Datang di <span className="text-fuchsia-500"> Website Lasinto.</span>
+          Selamat Datang di <span className="text-fuchsia-500"> Website Afanhanan.</span>
         </h1>
-        <p>Saya adalah seorang orang yang akan mengorangkan orang karena orang adalah orang</p>
+        <p>Saya adalah seorang programmer yang berkomitmen satu, yaitu memberikan yang terbaik.</p>
 
         <div className="flex mt-8 gap-2 max-md:justify-center">
             <div className="flex space-x-2">
